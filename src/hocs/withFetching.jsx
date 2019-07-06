@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import countriesSerivces from '../services/country';
+import countriesSerivces from '../services/movies';
+import Loading from '../Components/common/Loading';
 
 const withFetching = (WrappedComponent) =>
     class extends Component {
@@ -15,7 +16,7 @@ const withFetching = (WrappedComponent) =>
 
         componentDidMount = async () => {
             try {
-                const data = await countriesSerivces.getAllCountries();
+                const data = await countriesSerivces.getTopRatedMovies();
                 this.setState({ data, isLoading: false });
             } catch (error) {
                 this.setState({ error, isLoading: false })
@@ -25,7 +26,7 @@ const withFetching = (WrappedComponent) =>
 
         render() {
             if (this.state.isLoading) {
-                return <h1>Loading...</h1>
+                return <Loading />
             }
 
             return <WrappedComponent data={this.state.data} {...this.props} />

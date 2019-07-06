@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import Countries from './Components/Countries';
+import './App.css';
+import Movies from './Components/TopRatedMoviesPage/TopRatedMovies';
 
 function App() {
-  
   return (
     <Fragment>
-      <Countries />
+      <Movies />
     </Fragment>
   );
 }
